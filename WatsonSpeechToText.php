@@ -1,16 +1,16 @@
 <?php
 //
-//  IBM Bluemix Speech to Text
+//  IBM Watson Speech to Text
 //
 
-define("API_USERNAME",    "<Bluemix Username>");
-define("API_PASSWORD",    "<Bluemix Password>");
-define("API_BASE_URL",    "https://stream.watsonplatform.net");
-define("API_SERVICE",     "/speech-to-text");
-define("API_VERSION",     "/api/v1/recognize");
-define("API_NARROW_BAND", "ja-JP_NarrowbandModel");
-define("API_BROAD_BAND",  "ja-JP_BroadbandModel");
-define("API_REQUEST_URL", API_BASE_URL.API_SERVICE.API_VERSION."?model=".API_NARROW_BAND);
+define("WTS_USERNAME",    "<Watson Username>");
+define("WTS_PASSWORD",    "<Watson Password>");
+define("WTS_BASE_URL",    "https://stream.watsonplatform.net");
+define("WTS_SERVICE",     "/speech-to-text");
+define("WTS_VERSION",     "/api/v1/recognize");
+define("WTS_NARROW_BAND", "ja-JP_NarrowbandModel");
+define("WTS_BROAD_BAND",  "ja-JP_BroadbandModel");
+define("WTS_REQUEST_URL", WTS_BASE_URL.WTS_SERVICE.WTS_VERSION."?model=".WTS_NARROW_BAND);
 
 function Speech_to_Text($audioFile, $audioType) {
     $size = filesize($audioFile);
@@ -21,8 +21,8 @@ function Speech_to_Text($audioFile, $audioType) {
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_URL, API_REQUEST_URL);
-    curl_setopt($ch, CURLOPT_USERPWD, API_USERNAME.":".API_PASSWORD);
+    curl_setopt($ch, CURLOPT_URL, WTS_REQUEST_URL);
+    curl_setopt($ch, CURLOPT_USERPWD, WTS_USERNAME.":".WTS_PASSWORD);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         "Content-Type: $audioType",
         "Transfer-Encoding: chunked"
