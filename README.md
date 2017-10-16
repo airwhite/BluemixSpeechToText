@@ -9,7 +9,7 @@ IBM Watson Speech to Text PHP function
 - 取得したユーザ名とパスワードを test.php 内で指定して実行してみて下さい。
 # 動作確認
 ~~~
-$ php sample.php
+$ php test.php
 string(258) "{
    "results": [
       {
